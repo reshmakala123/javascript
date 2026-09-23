@@ -1,31 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Online store</title>
+    <title>Item Return</title>
 </head>
+
 <body>
+
+    <h2>DENIM JACKET</h2>
+
+    <p id="itemName"></p>
+    <p id="deliveryStatus"></p>
+    <p id="days"></p>
+    <p id="result"></p>
+    <p id="itemCheck"></p>
+    <p id="deleteCheck"></p>
+
+    <button onclick="checkReturn()">Check Return Status</button>
+
     <script>
-        var order={
-            itemName:"Denim Jacket",
-            isDelivered:true,
-            daysSinceDelivery:7,
+
+        function checkReturn() {
+
+            var order = {
+                itemName: "Denim Jacket",
+                isDelivered: true,
+                daysSinceDelivery: 7
+            };
+
+            var returnStatus =
+                order.isDelivered && order.daysSinceDelivery <= 7;
+
+            document.getElementById("itemName").innerHTML =
+                "Item Name: " + order.itemName;
+
+            document.getElementById("deliveryStatus").innerHTML =
+                "Delivery Status: Item has been delivered";
+
+            document.getElementById("days").innerHTML =
+                "Days Since Delivery: " + order.daysSinceDelivery;
+
+            document.getElementById("result").innerHTML =
+                "Return Status: " +
+                (returnStatus ? "Eligible for Return" : "Return Period Expired");
+
+            var itemExists = "itemName" in order;
+
+            document.getElementById("itemCheck").innerHTML =
+                "Item Name Property Exists: " + itemExists;
+
+            delete order.daysSinceDelivery;
+
+            document.getElementById("deleteCheck").innerHTML =
+                "Days Since Delivery: " +
+                !("daysSinceDelivery" in order);
+
         }
-        console.log("Item Name:", order.itemName);
-        console.log("Delivered:", order.isDelivered);
-        console.log("Days Since Delivery:", order.daysSinceDelivery);
-
-    var result = order.isDelivery && order.daysSinceDelivery <=7
-           ? "Eligible for Return"
-           : "Return Period Expired"
-
-    console.log("Return Status:", result);
-    console.log("Does itemName exist?","itemName" in order);
-
-    delete order.daysSinceDelivery;
-
-    console.log("Update order:", order);
 
     </script>
-    
+
 </body>
 </html>
+
