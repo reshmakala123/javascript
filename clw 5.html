@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online store</title>
+</head>
+<body>
+    <script>
+        var order={
+            itemName:"Denim Jacket",
+            isDelivered:true,
+            daysSinceDelivery:7,
+        }
+        console.log("Item Name:", order.itemName);
+        console.log("Delivered:", order.isDelivered);
+        console.log("Days Since Delivery:", order.daysSinceDelivery);
+
+    var result = order.isDelivery && order.daysSinceDelivery <=7
+           ? "Eligible for Return"
+           : "Return Period Expired"
+
+    console.log("Return Status:", result);
+    console.log("Does itemName exist?","itemName" in order);
+
+    delete order.daysSinceDelivery;
+
+    console.log("Update order:", order);
+
+    </script>
+    
+</body>
+</html>
