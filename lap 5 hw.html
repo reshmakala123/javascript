@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+
+    <button onclick="checkAccess()">Check Access</button>
+
+    <p id="result"></p>
+
+    <script>
+        var user1 = {
+            name: "Anu",
+            age: 20,
+            isAdmin: true
+        };
+
+        var user2 = {
+            name: "Ammu",
+            age: 17,
+            isAdmin: true
+        };
+
+        function checkAccess() {
+
+            var ageExists1 = "age" in user1;
+            var ageExists2 = "age" in user2;
+
+            var access1 = (user1.age >= 18 && user1.isAdmin)
+                ? "Access Granted"
+                : "Access Denied";
+
+            var access2 = (user2.age >= 18 && user2.isAdmin)
+                ? "Access Granted"
+                : "Access Denied";
+
+            document.getElementById("result").innerHTML =
+                "Name: " + user1.name + "<br>" +
+                "Age property exists: " + ageExists1 + "<br>" +
+                "Admin: " + user1.isAdmin + "<br>" +
+                "Access: " + access1 + "<br><br>" +
+
+                "Name: " + user2.name + "<br>" +
+                "Age property exists: " + ageExists2 + "<br>" +
+                "Admin: " + user2.isAdmin + "<br>" +
+                "Access: " + access2;
+
+            delete user1.age;
+            delete user2.age;
+        }
+    </script>
+
+</body>
+</html>
